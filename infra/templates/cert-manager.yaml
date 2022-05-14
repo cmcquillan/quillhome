@@ -5,6 +5,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  project: default
   destination:
     namespace: cert-manager
     server: https://kubernetes.default.svc
