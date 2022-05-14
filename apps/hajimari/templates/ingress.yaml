@@ -1,8 +1,8 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: argocd-server
-  namespace: argocd
+  name: hajimari
+  namespace: hajimari
 spec:
   entryPoints:
     - websecure
@@ -11,7 +11,7 @@ spec:
       match: Host(`home.quillte.ch`)
       priority: 10
       services:
-        - name: argocd-server
+        - name: hajimari
           port: 80
   tls: {}
     

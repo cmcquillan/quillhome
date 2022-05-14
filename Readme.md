@@ -7,5 +7,5 @@ kubectl patch ingressroute -n kube-system traefik-dashboard --type=merge -p '{\"
 
 kubectl edit ingressroute -n kube-system traefik-dashboard
 
-match: Host(`argo.quillte.ch`) && (HostPathPrefix(`/dashboard`) || PathPrefix(`/api`))
+match: Host(`traefik.quillte.ch`) && (HostPathPrefix(`/dashboard`) || PathPrefix(`/api`))
 ```
