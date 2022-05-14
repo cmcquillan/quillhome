@@ -10,28 +10,28 @@ spec:
     namespace: cert-manager
     server: https://kubernetes.default.svc
   source:
-      repoURL: https://github.com/cert-manager/cert-manager
-      path: deploy/charts/cert-manager
-      targetRevision: {{ .Values.targetRevision | quote }}
-  helm:
-    values: |
-      ##
-      ## Default values for cert-manager.
-      ## This is a YAML-formatted file.
-      ## Declare variables to be passed into your templates.
-      ##
-      global:
-        leaderElection:
-          # Override the namespace used to store the ConfigMap for leader election
-          namespace: "cert-manager"
-      installCRDs: true
+    repoURL: https://github.com/cert-manager/cert-manager
+    path: deploy/charts/cert-manager
+    targetRevision: {{ .Values.targetRevision | quote }}
+    helm:
+      values: |
+        ##
+        ## Default values for cert-manager.
+        ## This is a YAML-formatted file.
+        ## Declare variables to be passed into your templates.
+        ##
+        global:
+          leaderElection:
+            # Override the namespace used to store the ConfigMap for leader election
+            namespace: "cert-manager"
+        installCRDs: true
 
-      # Override the namespace used to store DNS provider credentials etc. for ClusterIssuer
-      # resources. This namespace will not be automatically created by the Helm chart.
-      clusterResourceNamespace: "cert-manager"
-      ##
-      ## End of additional cert-manager resource settings.
-      ##
+        # Override the namespace used to store DNS provider credentials etc. for ClusterIssuer
+        # resources. This namespace will not be automatically created by the Helm chart.
+        clusterResourceNamespace: "cert-manager"
+        ##
+        ## End of additional cert-manager resource settings.
+        ##
   syncPolicy:
     automated:
       prune: true
