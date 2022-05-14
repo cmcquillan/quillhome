@@ -1,0 +1,5 @@
+gitops:
+  repo: https://github.com/cmcquillan/quillhome.git
+  revision: main
+stacks:
+  - apps

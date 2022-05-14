@@ -1,6 +1,6 @@
 apiVersion: v2
-name: infra
-description: Base Infrastructure Applications
+name: root
+description: Central ArgoCD Application
 
 type: application
 version: 0.1.0

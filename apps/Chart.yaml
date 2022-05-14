@@ -1,6 +1,6 @@
 apiVersion: v2
-name: infra
-description: Base Infrastructure Applications
+name: apps
+description: User-space Applications
 
 type: application
 version: 0.1.0
