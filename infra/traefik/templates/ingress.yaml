@@ -7,8 +7,10 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`traefik.quillte.ch`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
-      kind: Rule
+    - kind: Rule
+      match: Host(`traefik.quillte.ch`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      priority: 10
       services:
         - name: api@internal
           kind: TraefikService
+  tls: {}
