@@ -12,8 +12,9 @@ hajimari:
         hajimari.io/enable: "false"
       hosts:
         - host: "home.quillte.ch"
-          path: /
-          pathType: Prefix
+          paths:
+            - path: /
+              pathType: Prefix
           service:
             name: hajimari
             port: 3000
