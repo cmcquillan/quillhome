@@ -27,13 +27,11 @@ hajimari:
     defaultEnable: true
     namespaceSelector:
       any: true
+    customApps:
+      - name: Longhorn
+        url: "https://longhorn.quillte.ch/"
+        group: Infrastructure
     groups:
-      - name: Homelab
-        links:
-          - name: Documentation
-            url: https://homelab.khuedoan.com
-          - name: Public GitHub repository
-            url: https://github.com/cmcquillan/quillhome
       - name: Managed services
         links:
           - name: Terraform Cloud

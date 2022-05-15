@@ -3,6 +3,11 @@ kind: IngressRoute
 metadata:
   name: argocd-server
   namespace: argocd
+annotation:
+  hajimari.io/enable: true
+  hajimari.io/app-name: "ArgoCD"
+  hajimari.io/group: "Infrastructure"
+  hajimari.io/url: "https://argo.quillte.ch/"
 spec:
   entryPoints:
     - websecure
