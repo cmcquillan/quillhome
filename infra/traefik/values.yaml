@@ -1,9 +1,14 @@
+ingressRoute:
+  dashboard:
+    enabled: false
 rbac:
   enabled: true
 ports:
   websecure:
-    tls:
-      enabled: true
+    address: ':443'
+    http:
+      tls:
+        enabled: true
 logs:
   general:
     level: DEBUG
