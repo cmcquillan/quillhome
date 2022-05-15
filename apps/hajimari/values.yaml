@@ -32,6 +32,7 @@ hajimari:
         url: "https://longhorn.quillte.ch/"
         group: Infrastructure
     groups:
+      - name: Infrastructure
       - name: Managed services
         links:
           - name: Terraform Cloud
