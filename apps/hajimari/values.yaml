@@ -32,7 +32,7 @@ hajimari:
         url: "https://longhorn.quillte.ch/"
         group: Infrastructure
       - name: Traefik Dashboard
-        url: "https://traefik.quillte.ch/dashboard"
+        url: "https://traefik.quillte.ch/dashboard/"
         group: Infrastructure
       - name: ArgoCD
         url: "https://argo.quillte.ch/"
