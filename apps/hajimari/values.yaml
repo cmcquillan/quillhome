@@ -13,7 +13,6 @@ hajimari:
         hajimari.io/enable: "false"
       hosts:
         - "home.quillte.ch"
-      tls: {}
   hajimari:
     defaultEnable: true
     namespaceSelector:
