@@ -6,13 +6,21 @@ hajimari:
   ingress:
     main:
       enabled: true
-      pathType: Prefix
       ingressClassName: "traefik"
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
         hajimari.io/enable: "false"
       hosts:
-        - "home.quillte.ch"
+        - host: "home.quillte.ch"
+          path: /
+          pathType: Prefix
+          service:
+            name: hajimari
+            port: 3000
+      tls:
+        - secretName: hajimari-tls-certificate
+          hosts:
+            - "home.quillte.ch"
   hajimari:
     defaultEnable: true
     namespaceSelector:
