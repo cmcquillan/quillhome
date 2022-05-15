@@ -17,7 +17,8 @@ hajimari:
               pathType: Prefix
           service:
             name: "hajimari"
-            port: "3000"
+            port:
+              number: 3000
       tls:
         - secretName: hajimari-tls-certificate
           hosts:
