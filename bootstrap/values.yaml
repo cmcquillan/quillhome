@@ -2,5 +2,5 @@ gitops:
   repo: https://github.com/cmcquillan/quillhome.git
   revision: main
 stacks:
+  - name: infra
   # - name: apps
-  # - name: infra

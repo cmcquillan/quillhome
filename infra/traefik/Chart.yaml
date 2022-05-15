@@ -1,0 +1,10 @@
+apiVersion: v2
+name: traefik
+version: 0.0.0
+dependencies:
+  - name: traefik
+    version: 10.19.300
+    repository: https://helm.traefik.io/traefik
+  - name: traefik-crd
+    version: 10.19.300
+    repository: https://helm.traefik.io/traefik
