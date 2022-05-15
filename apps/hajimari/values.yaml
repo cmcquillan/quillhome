@@ -31,6 +31,12 @@ hajimari:
       - name: Longhorn
         url: "https://longhorn.quillte.ch/"
         group: Infrastructure
+      - name: Traefik Dashboard
+        url: "https://traefik.quillte.ch/dashboard"
+        group: Infrastructure
+      - name: ArgoCD
+        url: "https://argo.quillte.ch/"
+        group: Infrastructure
     groups:
       - name: Infrastructure
       - name: Managed services
