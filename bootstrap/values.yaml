@@ -3,4 +3,4 @@ gitops:
   revision: main
 stacks:
   # - name: apps
-  - name: infra
+  # - name: infra
