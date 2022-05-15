@@ -1,17 +1,18 @@
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: hajimari
-#   namespace: hajimari
-# spec:
-#   entryPoints:
-#     - websecure
-#   routes:
-#     - kind: Rule
-#       match: Host(`home.quillte.ch`)
-#       priority: 10
-#       services:
-#         - name: hajimari
-#           port: 3000
-#   tls: {}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: hajimari
+  namespace: hajimari
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`home.quillte.ch`)
+      priority: 10
+      services:
+        - name: hajimari
+          port: 3000
+  tls: {}
     

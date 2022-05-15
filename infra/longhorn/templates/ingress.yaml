@@ -5,6 +5,7 @@ metadata:
   namespace: longhorn
 spec:
   entryPoints:
+    - web
     - websecure
   routes:
     - kind: Rule
