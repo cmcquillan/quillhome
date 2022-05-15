@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: longhorn-frontend
+  namespace: longhorn
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`longhorn.quillte.ch`)
+      priority: 10
+      services:
+        - name: longhorn-frontend
+          port: 80
+  tls: {}
+    
