@@ -13,6 +13,8 @@ providers:
   kubernetesIngress:
     publishedService:
       enabled: true
+globalArguments:
+  - "--api.insecure=true"
 priorityClassName: "system-cluster-critical"
 tolerations:
   - key: "CriticalAddonsOnly"
