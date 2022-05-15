@@ -12,7 +12,7 @@ trow:
       proxyDockerHub: false
 
   ingress:
-    enabled: true  # TODO https://github.com/ContainerSolutions/trow/issues/282
+    enabled: true
     annotations:
       kubernetes.io/ingress.class: traefik
       cert-manager.io/cluster-issuer: letsencrypt-prod
