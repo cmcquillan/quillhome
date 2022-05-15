@@ -16,7 +16,6 @@ trow:
     annotations:
       kubernetes.io/ingress.class: traefik
       cert-manager.io/cluster-issuer: letsencrypt-prod
-      nginx.ingress.kubernetes.io/proxy-body-size: '0'
       hajimari.io/enable: 'true'
       hajimari.io/group: Infrastructure
     hosts:
