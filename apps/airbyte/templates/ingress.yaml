@@ -12,7 +12,7 @@ spec:
       match: Host(`airbyte.quillte.ch`)
       priority: 10
       services:
-        - name: airbyte
+        - name: airbyte-webapp
           port: 80
   tls: {}
     
