@@ -3,4 +3,6 @@ gitops:
   revision: main
 stacks:
   - name: infra
+    exclusions:
+      - longhorn
   - name: apps
