@@ -11,7 +11,7 @@ hajimari:
         cert-manager.io/cluster-issuer: letsencrypt-prod
         hajimari.io/enable: "false"
       hosts:
-        - host: "home.quillte.ch"
+        - host: "home.quillhome.localhost"
           paths:
             - path: /
               pathType: Prefix
@@ -22,20 +22,20 @@ hajimari:
       tls:
         - secretName: hajimari-tls-certificate
           hosts:
-            - "home.quillte.ch"
+            - "home.quillhome.localhost"
   hajimari:
     defaultEnable: true
     namespaceSelector:
       any: true
     customApps:
       - name: Longhorn
-        url: "https://longhorn.quillte.ch/"
+        url: "https://longhorn.quillhome.localhost/"
         group: Infrastructure
       - name: Traefik Dashboard
-        url: "https://traefik.quillte.ch/dashboard/"
+        url: "https://traefik.quillhome.localhost/dashboard/"
         group: Infrastructure
       - name: ArgoCD
-        url: "https://argo.quillte.ch/"
+        url: "https://argo.quillhome.localhost/"
         group: Infrastructure
     groups:
       - name: Infrastructure

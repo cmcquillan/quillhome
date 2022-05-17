@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`airbyte.quillte.ch`)
+      match: Host(`airbyte.quillhome.localhost`)
       priority: 10
       services:
         - name: airbyte-webapp

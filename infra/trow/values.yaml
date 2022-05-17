@@ -1,6 +1,6 @@
 trow:
   trow:
-    domain: registry.quillte.ch
+    domain: registry.quillhome.localhost
     validation:
       enabled: false
       allowDocker: false
@@ -19,7 +19,7 @@ trow:
       hajimari.io/enable: 'true'
       hajimari.io/group: Infrastructure
     hosts:
-      - host: &host registry.quillte.ch
+      - host: &host registry.quillhome.localhost
         paths:
           - /
     tls:
