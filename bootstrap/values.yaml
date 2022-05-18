@@ -3,7 +3,5 @@ gitops:
   revision: main
 stacks:
   - name: infra
-    exclusions:
-      - longhorn: true
   - name: apps
 excludedStacks: {}
