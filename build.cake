@@ -14,6 +14,7 @@ var target = Argument("target", "Build");
 var domain = Argument<string>("domain", defaultDomain);
 var branch = Argument<string>("branch", currentBranch);
 var repo = Argument<string>("repo", defaultRepo);
+var local = Argument<bool>("local", false);
 
 Task("ReplaceDomainInFiles")
     .Does(() => {
@@ -63,6 +64,12 @@ Task("ClusterInitialize")
             .Append("--dest-server").Append("https://kubernetes.default.svc")
             .Append("--dest-namespace").Append("argocd")
             .Append("--path").Append("bootstrap");
+
+        if (local) {
+            builder
+                .Append("-p")
+                .Append("excludedStacks.infra.longhorn=true");
+        }
 
         argoExit = Context.StartProcess("argocd", builder.Render());
 

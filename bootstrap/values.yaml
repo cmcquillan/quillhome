@@ -4,5 +4,6 @@ gitops:
 stacks:
   - name: infra
     exclusions:
-      - longhorn
+      - longhorn: true
   - name: apps
+excludedStacks: {}
