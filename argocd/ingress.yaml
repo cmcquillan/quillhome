@@ -9,6 +9,10 @@ metadata:
     traefik.ingress.kubernetes.io/router.priority: "10"
 spec:
   ingressClassName: traefik-lb
+  tls:
+  - hosts:
+    - argo.quillhome.localhost
+    secretName: tls-argocd-secret
   rules:
   - host: argo.quillhome.localhost
     http:

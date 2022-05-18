@@ -68,11 +68,11 @@ Task("ClusterInitialize")
         if (local) {
             builder
                 .Append("-p")
-                .Append("excludedStacks.infra.longhorn=true");
+                .Append("excludedStacks.infra.longhorn=true")
                 .Append("-p")
                 .Append("trow.trow.volumeClaim.storageClassName=''")
                 .Append("-p")
-                .Append("airbyte.global.storageClass=''")
+                .Append("airbyte.global.storageClass=''");
         }
 
         argoExit = Context.StartProcess("argocd", builder.Render());
