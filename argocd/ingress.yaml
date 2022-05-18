@@ -11,10 +11,10 @@ spec:
   ingressClassName: traefik-lb
   tls:
   - hosts:
-    - argo.quillhome.localhost
+    - argo.quill.local
     secretName: tls-argocd-secret
   rules:
-  - host: argo.quillhome.localhost
+  - host: argo.quill.local
     http:
       paths:
       - path: /

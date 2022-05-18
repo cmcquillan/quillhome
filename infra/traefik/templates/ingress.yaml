@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`traefik.quillhome.localhost`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      match: Host(`traefik.quill.local`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       priority: 10
       services:
         - name: api@internal

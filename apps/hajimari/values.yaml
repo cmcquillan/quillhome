@@ -11,7 +11,7 @@ hajimari:
         cert-manager.io/cluster-issuer: letsencrypt-prod
         hajimari.io/enable: "false"
       hosts:
-        - host: "home.quillhome.localhost"
+        - host: "home.quill.local"
           paths:
             - path: /
               pathType: Prefix
@@ -22,20 +22,20 @@ hajimari:
       tls:
         - secretName: hajimari-tls-certificate
           hosts:
-            - "home.quillhome.localhost"
+            - "home.quill.local"
   hajimari:
     defaultEnable: true
     namespaceSelector:
       any: true
     customApps:
       - name: Longhorn
-        url: "https://longhorn.quillhome.localhost/"
+        url: "https://longhorn.quill.local/"
         group: Infrastructure
       - name: Traefik Dashboard
-        url: "https://traefik.quillhome.localhost/dashboard/"
+        url: "https://traefik.quill.local/dashboard/"
         group: Infrastructure
       - name: ArgoCD
-        url: "https://argo.quillhome.localhost/"
+        url: "https://argo.quill.local/"
         group: Infrastructure
     groups:
       - name: Infrastructure

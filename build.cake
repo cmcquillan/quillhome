@@ -1,31 +1,42 @@
 #addin nuget:?package=Cake.FileHelpers
 #addin nuget:?package=Cake.Git
 #addin nuget:?package=Cake.Kubectl&version=1.0.0
+#addin nuget:?package=Cake.Yaml
+#addin nuget:?package=YamlDotNet&version=6.1.2
 
 using Cake.FileHelpers;
 using Cake.Git;
 
-const string defaultDomain = "quillte.ch";
-const string defaultRepo = "https://github.com/cmcquillan/quillhome.git";
-const string defaultBranch = "main";
+public class QuillConfig 
+{
+    public string Domain { get; set; }
+    public string Branch { get; set; }
+    public string Repo { get; set; }
+}
+
+var config = Context.DeserializeYamlFromFile<QuillConfig>("cake.yaml");
+
+Console.WriteLine(config.Domain);
+Console.WriteLine(config.Branch);
+Console.WriteLine(config.Repo);
+
 string currentBranch = Context.GitBranchCurrent(".").FriendlyName;
 
 var target = Argument("target", "Build");
-var domain = Argument<string>("domain", defaultDomain);
-var branch = Argument<string>("branch", currentBranch);
-var repo = Argument<string>("repo", defaultRepo);
-var local = Argument<bool>("local", false);
+var domain = Argument<string>("domain", config.Domain);
+var branch = Argument<string>("branch", config.Branch);
+var repo = Argument<string>("repo", config.Repo);
 
 Task("ReplaceDomainInFiles")
     .Does(() => {
-        Context.ReplaceTextInFiles("**/*.yaml", defaultDomain, domain);
-        Information(log => log("Updating cluster domain from {0} to {1}", defaultDomain, domain));
+        Context.ReplaceTextInFiles("**/*.yaml", config.Domain, domain);
+        Information(log => log("Updating cluster domain from {0} to {1}", config.Domain, domain));
     });
 
 Task("ReplaceBranchNameInFiles")
     .Does(() => {
-        Context.ReplaceTextInFiles("**/*.yaml", $"revision: {defaultBranch}", $"revision: {branch}");
-        Information(log => log("Updating branch config from {0} to {1}", defaultBranch, branch));
+        Context.ReplaceTextInFiles("**/*.yaml", $"revision: {config.Branch}", $"revision: {branch}");
+        Information(log => log("Updating branch config from {0} to {1}", config.Domain, branch));
     });
 
 Task("ClusterInitialize")
@@ -60,20 +71,11 @@ Task("ClusterInitialize")
 
         builder = new ProcessArgumentBuilder()
             .Append("app").Append("create").Append("root")
+            .Append("--upsert")
             .Append("--repo").Append(repo)
             .Append("--dest-server").Append("https://kubernetes.default.svc")
             .Append("--dest-namespace").Append("argocd")
             .Append("--path").Append("bootstrap");
-
-        if (local) {
-            builder
-                .Append("-p")
-                .Append("excludedStacks.infra.longhorn=true")
-                .Append("-p")
-                .Append("trow.trow.volumeClaim.storageClassName=''")
-                .Append("-p")
-                .Append("airbyte.global.storageClass=''");
-        }
 
         argoExit = Context.StartProcess("argocd", builder.Render());
 

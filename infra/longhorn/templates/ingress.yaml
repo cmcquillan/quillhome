@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`longhorn.quillhome.localhost`)
+      match: Host(`longhorn.quill.local`)
       priority: 10
       services:
         - name: longhorn-frontend

@@ -1,6 +1,6 @@
 trow:
   trow:
-    domain: registry.quillhome.localhost
+    domain: registry.quill.local
     validation:
       enabled: false
       allowDocker: false
@@ -19,7 +19,7 @@ trow:
       hajimari.io/enable: 'true'
       hajimari.io/group: Infrastructure
     hosts:
-      - host: &host registry.quillhome.localhost
+      - host: &host registry.quill.local
         paths:
           - /
     tls:
