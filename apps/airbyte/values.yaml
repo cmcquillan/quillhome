@@ -9,7 +9,7 @@ webapp:
       hajimari.io/enable: 'true'
       hajimari.io/group: Infrastructure
     hosts:
-      - host: &host airbyte.quillte.ch
+      - host: &host airbyte.quill.local
         paths:
           - /
     tls: 

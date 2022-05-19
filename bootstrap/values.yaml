@@ -4,3 +4,4 @@ gitops:
 stacks:
   - name: infra
   - name: apps
+excludedStacks: {}

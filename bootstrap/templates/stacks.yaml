@@ -12,6 +12,12 @@ spec:
         revision: {{ $.Values.gitops.revision }}
         directories:
           - path: {{ $stack.name }}/*
+          {{- if hasKey $.Values.excludedStacks $stack.name }}
+          {{- range $k, $v := (first (values (pick $.Values.excludedStacks $stack.name))) }}
+          - path: {{ $stack.name }}/{{ $k }}
+            exclude: {{ $v }}
+          {{- end }}
+          {{- end }}
   template:
     metadata:
       name: '{{ `{{path.basename}}` }}'

@@ -1,0 +1,8 @@
+# Current defaults for cluster initialization
+# These will be re-written as necessary by the
+# bootstrap script.
+
+---
+Domain: "quill.local"
+Repo: "https://github.com/cmcquillan/quillhome.git"
+Branch: "main"
