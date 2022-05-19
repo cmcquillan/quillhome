@@ -7,8 +7,12 @@ ports:
       tls:
         enabled: true
 logs:
+  access:
+    enabled: true
   general:
     level: DEBUG
+accessLog:
+  filePath: "/var/traefik/access.log"
 providers:
   kubernetesIngress:
     publishedService:
