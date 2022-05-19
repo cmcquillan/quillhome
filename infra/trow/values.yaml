@@ -10,7 +10,8 @@ trow:
       disallowLocalPrefixes: []
       disallowLocalImages: []
       proxyDockerHub: false
-
+  accessLog:
+    filePath: "/var/traefik/access.log"
   ingress:
     enabled: true
     annotations:
