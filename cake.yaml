@@ -3,6 +3,6 @@
 # bootstrap script.
 
 ---
-Domain: "quill.local"
+Domain: "quillte.ch"
 Repo: "https://github.com/cmcquillan/quillhome.git"
 Branch: "dev"

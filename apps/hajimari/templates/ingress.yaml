@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`home.quill.local`)
+      match: Host(`home.quillte.ch`)
       priority: 10
       services:
         - name: hajimari
