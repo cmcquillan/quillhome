@@ -93,11 +93,4 @@ Task("ClusterInitialize")
         }
     });
 
-Task("ReplaceBranchNameInFiles")
-    .Does(() => {
-        Context.ReplaceTextInFiles("**/*.yaml", $"revision: {defaultBranch}", branch);
-        Information(log => log("Updating branch config from {0} to {1}", defaultBranch, branch));
-    });
-
-
 RunTarget(target);
