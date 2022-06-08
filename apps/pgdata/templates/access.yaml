@@ -1,17 +1,11 @@
+{{- $pgpass := (index (lookup "v1" "Secret" .Release.Namespace "pgdata-auth").data "postgres-password") -}}
+{{- $quillpass := (index (lookup "v1" "Secret" .Release.Namespace "pgdata-auth").data "password") -}}
+{{- $reppass := (index (lookup "v1" "Secret" .Release.Namespace "pgdata-auth").data "replication-password") -}}
 apiVersion: v1
 kind: Secret
 metadata:
   name: pgdata-auth
 data:
-  {{- if .Release.IsInstall }}
-  postgres-password: {{ randAlphaNum 20 | b64enc }}
-  password: {{ randAlphaNum 20 | b64enc }}
-  replication-password: {{ randAlphaNum 20 | b64enc }}
-  {{ else }}
-  # `index` function is necessary because the property name contains a dash.
-  # Otherwise (...).data.db_password would have worked too.
-  postgres-password:  {{ index (lookup "v1" "Secret" .Release.Namespace "pgdata-auth").data "postgres-password" }}
-  password:  {{ index (lookup "v1" "Secret" .Release.Namespace "pgdata-auth").data "password" }}
-  replication-password:  {{ index (lookup "v1" "Secret" .Release.Namespace "pgdata-auth").data "replication-password" }}
-  {{ end }}
-  
+  postgres-password: {{ $pgpass | default (randAlphaNum 20 | b64enc) }}
+  password: {{ $quillpass | default (randAlphaNum 20 | b64enc) }}
+  replication-password: {{ $reppass | default (randAlphaNum 20 | b64enc) }}
