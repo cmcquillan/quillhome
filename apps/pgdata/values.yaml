@@ -2,6 +2,7 @@ global:
   storageClass: longhorn
   postgresql:
     auth:
+      username: quilladmin
       existingSecret: pgdata-auth
       adminPasswordKey: postgres-password
       userPasswordKey: password
