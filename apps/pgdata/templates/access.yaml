@@ -4,6 +4,12 @@ kind: Secret
 metadata:
   name: pgdata-auth
 data:
-  postgres-password: {{ index $secret.data "postgres-password" | default (randAlphaNum 20 | b64enc) }}
-  password: {{ index $secret.data "password" | default (randAlphaNum 20 | b64enc) }}
-  replication-password: {{ index $secret.data "replication-password" | default (randAlphaNum 20 | b64enc) }}
+  {{- if $secret }}
+  postgres-password: {{ index $secret.data "postgres-password" }}
+  password: {{ index $secret.data "password" }}
+  replication-password: {{ index $secret.data "replication-password" }}
+  {{ else }}
+  postgres-password: {{ randAlphaNum 20 | b64enc }}
+  password: {{ randAlphaNum 20 | b64enc }}
+  replication-password: {{ randAlphaNum 20 | b64enc }}
+  {{ end }}
