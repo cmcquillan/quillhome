@@ -1,0 +1,9 @@
+global:
+  storageClass: longhorn
+  postgresql:
+    auth:
+      existingSecret: pgdata-auth
+      adminPasswordKey: postgres-password
+      userPasswordKey: password
+      replicationPasswordKey: replication-password
+      database: playground
