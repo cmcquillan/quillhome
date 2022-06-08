@@ -1,11 +1,9 @@
-{{- $pgpass := (index (lookup "v1" "Secret" .Release.Namespace "pgdata-auth").data "postgres-password") -}}
-{{- $quillpass := (index (lookup "v1" "Secret" .Release.Namespace "pgdata-auth").data "password") -}}
-{{- $reppass := (index (lookup "v1" "Secret" .Release.Namespace "pgdata-auth").data "replication-password") -}}
+{{- $secret := (lookup "v1" "Secret" .Release.Namespace "pgdata-auth") -}}
 apiVersion: v1
 kind: Secret
 metadata:
   name: pgdata-auth
 data:
-  postgres-password: {{ $pgpass | default (randAlphaNum 20 | b64enc) }}
-  password: {{ $quillpass | default (randAlphaNum 20 | b64enc) }}
-  replication-password: {{ $reppass | default (randAlphaNum 20 | b64enc) }}
+  postgres-password: {{ index $secret.data "postgres-password" | default (randAlphaNum 20 | b64enc) }}
+  password: {{ index $secret.data "password" | default (randAlphaNum 20 | b64enc) }}
+  replication-password: {{ index $secret.data "replication-password" | default (randAlphaNum 20 | b64enc) }}
