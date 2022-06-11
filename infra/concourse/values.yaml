@@ -1,0 +1,2 @@
+postgresql.persistence.storageClass: longhorn
+persistence.worker.storageClass: longhorn
