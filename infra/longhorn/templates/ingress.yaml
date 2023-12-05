@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`longhorn.quillte.ch`)
+      match: Host(`longhorn.inside.lovequillprevail.com`)
       priority: 10
       services:
         - name: longhorn-frontend

@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`concourse.quillte.ch`)
+      match: Host(`concourse.inside.lovequillprevail.com`)
       priority: 10
       services:
         - name: concourse-web
