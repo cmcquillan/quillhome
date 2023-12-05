@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  resource.customizations: |
+    Ingress:
+        health.lua: |
+          hs = {}
+          hs.status = "Healthy"
+          return hs
