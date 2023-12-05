@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`registry.quillte.ch`)
+      match: Host(`registry.inside.lovequillprevail.com`)
       priority: 10
       services:
         - name: trow

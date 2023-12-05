@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`traefik.quillte.ch`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      match: Host(`traefik.inside.lovequillprevail.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       priority: 10
       services:
         - name: api@internal

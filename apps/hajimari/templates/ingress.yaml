@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`home.quillte.ch`)
+      match: Host(`home.inside.lovequillprevail.com`)
       priority: 10
       services:
         - name: hajimari
