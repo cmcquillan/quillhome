@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: wildcard-example-com
+  name: wildcard-inside-lovequillprevail-com-tls
 spec:
   secretName: wildcard-inside-lovequillprevail-com-tls
   dnsNames:
