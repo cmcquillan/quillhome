@@ -4,3 +4,5 @@ longhorn:
   persistence:
     defaultClassReplicaCount: 1 
     defaultClass: false
+  helmPreUpgradeCheckerJob:
+    enabled: false
