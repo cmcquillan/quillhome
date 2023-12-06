@@ -39,15 +39,31 @@ Task("ReplaceBranchNameInFiles")
         Information(log => log("Updating branch config from {0} to {1}", config.Domain, branch));
     });
 
+Task("InstallOrVerifyArgo")
+    .Does(() => {
+        var builder = new ProcessArgumentBuilder()
+            .Append("install")
+            .Append("argocd")
+            .Append("./argocd");
+
+        var helmExit = Context.StartProcess("helm");
+
+        if (helmExit > 0) {
+            Console.WriteLine("Helm install failed: {0}", helmExit);
+        }
+    })
+
+
 Task("ClusterInitialize")
     .IsDependentOn("ReplaceDomainInFiles")
+    .IsDependentOn("InstallOrVerifyArgo")
     .Does(() => {
-        Context.KubectlApply(new KubectlApplySettings
-        {
-            Kustomize = "./argocd"
-        });
+        // Context.KubectlApply(new KubectlApplySettings
+        // {
+        //     Kustomize = "./argocd"
+        // });
 
-        var builder = new ProcessArgumentBuilder()
+        builder = new ProcessArgumentBuilder()
             .Append("config").Append("set-context")
             .Append("--current")
             .Append("--namespace").Append("argocd");

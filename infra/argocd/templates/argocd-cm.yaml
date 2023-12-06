@@ -4,7 +4,7 @@ metadata:
   name: argocd-cm
 data:
   resource.customizations: |
-    networking.k8s.io/Ingress::
+    networking.k8s.io/Ingress:
         health.lua: |
           hs = {}
           hs.status = "Healthy"
