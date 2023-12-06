@@ -2,7 +2,7 @@
 #addin nuget:?package=Cake.Git
 #addin nuget:?package=Cake.Kubectl&version=1.0.0
 #addin nuget:?package=Cake.Yaml
-#addin nuget:?package=YamlDotNet&version=6.1.2
+#addin nuget:?package=YamlDotNet&version=12.0.0
 
 using Cake.FileHelpers;
 using Cake.Git;
@@ -41,29 +41,48 @@ Task("ReplaceBranchNameInFiles")
 
 Task("InstallOrVerifyArgo")
     .Does(() => {
+        var repo = new ProcessArgumentBuilder()
+            .Append("repo")
+            .Append("add")
+            .Append("argo")
+            .Append("https://argoproj.github.io/argo-helm");
+
+        var repoExit = Context.StartProcess("helm", repo.Render());
+
+	var deps = new ProcessArgumentBuilder()
+            .Append("dependency")
+            .Append("build")
+            .Append("./argocd");
+
+        var depExit = Context.StartProcess("helm", deps.Render());
+
         var builder = new ProcessArgumentBuilder()
             .Append("install")
             .Append("argocd")
-            .Append("./argocd");
+            .Append("./argocd")
+            .Append("--namespace")
+            .Append("argocd")
+            .Append("--create-namespace");
 
-        var helmExit = Context.StartProcess("helm");
+        var helmExit = Context.StartProcess("helm", builder.Render());
 
         if (helmExit > 0) {
             Console.WriteLine("Helm install failed: {0}", helmExit);
+            throw new Exception("Could not install argocd: " + helmExit);
         }
-    })
+    });
 
 
 Task("ClusterInitialize")
     .IsDependentOn("ReplaceDomainInFiles")
-    .IsDependentOn("InstallOrVerifyArgo")
+    //.IsDependentOn("InstallOrVerifyArgo")
     .Does(() => {
         // Context.KubectlApply(new KubectlApplySettings
         // {
         //     Kustomize = "./argocd"
         // });
 
-        builder = new ProcessArgumentBuilder()
+        var builder = new ProcessArgumentBuilder()
             .Append("config").Append("set-context")
             .Append("--current")
             .Append("--namespace").Append("argocd");
