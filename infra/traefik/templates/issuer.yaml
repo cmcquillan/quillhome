@@ -14,7 +14,7 @@ spec:
           cnameStrategy: Follow
           route53:
             region: us-east-1
-            accessKeyID: <Access ID for less-privileged.example.org here>
+            accessKeyID: AKIAZ55FGPNGFCLKDAL3
             hostedZoneID: Z08851351A6ML6ZTSK0XN
             secretAccessKeySecretRef:
               name: aws-route53-key
