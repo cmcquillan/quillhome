@@ -6,3 +6,4 @@ longhorn:
     defaultClass: false
   helmPreUpgradeCheckerJob:
     enabled: false
+  enablePSP: true
