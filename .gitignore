@@ -1,3 +1,4 @@
 tools
 Chart.lock
 **/charts/*.tgz
+_temp/

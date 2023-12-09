@@ -6,3 +6,4 @@
 Domain: "lovequillprevail.com"
 Repo: "https://github.com/cmcquillan/quillhome.git"
 Branch: "main"
+Image: "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-boot.iso"

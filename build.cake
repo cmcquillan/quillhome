@@ -6,12 +6,14 @@
 
 using Cake.FileHelpers;
 using Cake.Git;
+using System.IO;
 
 public class QuillConfig 
 {
     public string Domain { get; set; }
     public string Branch { get; set; }
     public string Repo { get; set; }
+    public string Image { get; set; }
 }
 
 var config = Context.DeserializeYamlFromFile<QuillConfig>("cake.yaml");
@@ -26,6 +28,7 @@ var target = Argument("target", "Build");
 var domain = Argument<string>("domain", config.Domain);
 var branch = Argument<string>("branch", config.Branch);
 var repo = Argument<string>("repo", config.Repo);
+var image = Argument<string>("image", config.Image);
 
 Task("ReplaceDomainInFiles")
     .Does(() => {
@@ -37,6 +40,18 @@ Task("ReplaceBranchNameInFiles")
     .Does(() => {
         Context.ReplaceTextInFiles("**/*.yaml", $"revision: {config.Branch}", $"revision: {branch}");
         Information(log => log("Updating branch config from {0} to {1}", config.Domain, branch));
+    });
+
+var fileName = System.IO.Path.GetFileName(image);
+var path = File("./_temp/" + fileName);
+
+Task("DownloadLinuxIso")
+    .WithCriteria(!System.IO.File.Exists(path), "Linux ISO is already present")
+    .Does(() => {
+        var fileName = System.IO.Path.GetFileName(image);
+        var path = File("./_temp/" + fileName);
+        Context.DownloadFile(image, path);
+        Console.WriteLine("Completed ISO Download: {0}", path);
     });
 
 Task("InstallOrVerifyArgo")
