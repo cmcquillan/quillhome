@@ -11,7 +11,7 @@ hajimari:
         cert-manager.io/cluster-issuer: letsencrypt-prod
         hajimari.io/enable: "false"
       hosts:
-        - host: "home.inside.lovequillprevail.com"
+        - host: "home.svc.lovequillprevail.com"
           paths:
             - path: /
               pathType: Prefix
@@ -22,20 +22,20 @@ hajimari:
       tls:
         - secretName: hajimari-tls-certificate
           hosts:
-            - "home.inside.lovequillprevail.com"
+            - "home.svc.lovequillprevail.com"
   hajimari:
     defaultEnable: true
     namespaceSelector:
       any: true
     customApps:
       - name: Longhorn
-        url: "https://longhorn.inside.lovequillprevail.com/"
+        url: "https://longhorn.svc.lovequillprevail.com/"
         group: Infrastructure
       - name: Traefik Dashboard
-        url: "https://traefik.inside.lovequillprevail.com/dashboard/"
+        url: "https://traefik.svc.lovequillprevail.com/dashboard/"
         group: Infrastructure
       - name: ArgoCD
-        url: "https://argo.inside.lovequillprevail.com/"
+        url: "https://argo.svc.lovequillprevail.com/"
         group: Infrastructure
     groups:
       - name: Infrastructure

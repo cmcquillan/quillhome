@@ -7,7 +7,7 @@ kubectl patch ingressroute -n kube-system traefik-dashboard --type=merge -p '{\"
 
 kubectl edit ingressroute -n kube-system traefik-dashboard
 
-match: Host(`traefik.inside.lovequillprevail.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+match: Host(`traefik.svc.lovequillprevail.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
 ```
 
 This was able to fix my hosts w/ iptables

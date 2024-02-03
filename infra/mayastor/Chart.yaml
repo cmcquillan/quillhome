@@ -1,8 +1,0 @@
-apiVersion: v2
-name: mayastor
-version: 0.0.0
-dependencies:
-  - name: mayastor 
-    version: 2.4.0
-    repository: https://openebs.github.io/mayastor-extensions/
-
