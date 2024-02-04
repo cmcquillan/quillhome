@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`home.svc.lovequillprevail.com`)
+      match: Host(`home.inside.lovequillprevail.com`)
       priority: 10
       services:
         - name: hajimari

@@ -3,4 +3,18 @@ argo-cd:
     install: true
   cm:
     create: true
-
+  redis:
+    dnsConfig: {}
+  applicationSet:
+    dnsConfig: {}
+  notifications:
+    dnsConfig: {}
+  controller:
+    dnsConfig: {}
+  repoServer:
+    dnsConfig:
+      options:
+        - name: ndots
+          value: "6"
+  server:
+    dnsConfig: {}
