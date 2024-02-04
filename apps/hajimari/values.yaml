@@ -11,7 +11,7 @@ hajimari:
         cert-manager.io/cluster-issuer: letsencrypt-prod
         hajimari.io/enable: "false"
       hosts:
-        - host: "home.svc.lovequillprevail.com"
+        - host: "home.inside.lovequillprevail.com"
           paths:
             - path: /
               pathType: Prefix
@@ -22,7 +22,7 @@ hajimari:
       tls:
         - secretName: hajimari-tls-certificate
           hosts:
-            - "home.svc.lovequillprevail.com"
+            - "home.inside.lovequillprevail.com"
   hajimari:
     defaultEnable: true
     namespaceSelector:
